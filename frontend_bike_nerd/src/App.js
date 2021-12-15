@@ -9,26 +9,39 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userLoaded, setUserLoaded] = useState(false);
+  console.log(currentUser);
+  // useEffect(() => {
+  //   fetch("/hello")
+  //     .then((r) => r.json())
+  //     .then((data) => setCount(data.count));
+  // }, []);
 
   useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+    fetch('/me')
+        .then((r) => r.json())
+        .then((user) => {
+          // console.log(user.name)
+          setCurrentUser(user)
+          setUserLoaded(true)
+        })
+  }, [])
 
   return (
     <div className="App">
       <div>
-        <nav>
-          <Link to="/login"> login </Link>
-          <Link to="/"> home </Link>
-          <Link to="/frames"> my frames </Link>
-          <Link to="/parts"> my parts </Link>
-          <Link to="/builds"> my builds </Link>
+        <nav id="navbar">
+          {userLoaded? <Link className="navButton" to="/"> hi {currentUser.name} </Link>: null}
+          <Link className="navButton" to="/login"> {userLoaded? "logout":"login"} </Link>
+          <Link className="navButton" to="/"> home </Link>
+          <Link className="navButton" to="/frames"> my frames </Link>
+          <Link className="navButton" to="/parts"> my parts </Link>
+          <Link className="navButton" to="/builds"> my builds </Link>
         </nav>
         <Outlet/>
-      <h1>Page Count: {count}</h1>
+      {/* <h1>Page Count: {count}</h1> */}
       </div>
         <div>
           <Routes>
@@ -36,7 +49,7 @@ function App() {
             <Route path="frames" element={<Frames />}/>
             <Route path="parts" element={<Parts />}/>
             <Route path="builds" element={<Builds />}/>
-            <Route path="login" element={<Login />}/>
+            <Route path="login" setCurrentUser={setCurrentUser} currentUser={currentUser} userLoaded={userLoaded} element={<Login />}/>
             <Route path="*" element={<p>Whoops, there's nothing here!</p>}/>
           </Routes>
         </div>

@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+#navbar{
+  padding: 1rem;
+  margin: auto;
+}
+
+.navButton{
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  /* width: 30%; */
+  margin: auto;
+  transition-duration: 300ms;
+}
+
+.navButton:hover {
+  color: red;
+  padding: 1rem;
+  transform: scale(1.5);
+}

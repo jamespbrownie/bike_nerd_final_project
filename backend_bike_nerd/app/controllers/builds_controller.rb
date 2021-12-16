@@ -1,13 +1,13 @@
 class BuildsController < ApplicationController
     def index
         builds = current_user.builds
-        render json: builds.order(created_at: :desc)
+        render json: builds #.order(created_at: :desc)
     end
 
     def show
-        build = current_user.build.find_by(id: params[:id])
+        build = current_user.builds.find_by(id: params[:id])
         if build 
-            render json: build
+            render json: build#, include: :parts
         else 
             render json: {error: "build not found"}, status: :not_found
         end

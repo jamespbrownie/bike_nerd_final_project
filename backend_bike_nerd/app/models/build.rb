@@ -1,4 +1,5 @@
 class Build < ApplicationRecord
-    has_many :buildparts
-    has_many :parts, through: :buildparts
+    belongs_to :user
+    has_many :build_parts
+    has_many :parts, through: :build_parts
 end

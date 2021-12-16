@@ -30,10 +30,10 @@ function Parts() {
         <h1>PARTS</h1>
 
         <button class= "redirect_btn"> <Link class="redirect" to="/Part_form"> create new Part </Link></button>
-        <div id="PartCardsDiv">
+        <div id="partCardsDiv">
         {PartList.map((part) => {
             return (
-                <div id="partCardsDiv">
+                <div>
                     <PartCard 
                     setEdited={setEdited} edited={edited}
                     part={part} 

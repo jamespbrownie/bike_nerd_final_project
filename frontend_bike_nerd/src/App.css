@@ -56,3 +56,14 @@
   padding: 1rem;
   transform: scale(1.5);
 }
+
+#partCardsDiv { 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(3rem, auto);
+}
+
+.partImage {
+  width: 15rem;
+}

@@ -59,7 +59,7 @@ const Login= ({setCurrentUser, currentUser, setUserLoaded, userLoaded}) => {
 
     return ( 
 <>
-    {userLoaded? <h1>Hi, {currentUser.name}</h1>:<h1>please log in</h1> }
+    {/* {userLoaded? <h1>Hi, {currentUser.name}</h1>:<h1>please log in</h1> } */}
     <form onSubmit={handleSubmit}>
       <div class="form-group">
         <label for="exampleInputEmail1">username</label>

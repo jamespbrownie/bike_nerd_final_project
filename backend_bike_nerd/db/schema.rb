@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_160538) do
+ActiveRecord::Schema.define(version: 2021_12_15_223659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "build_parts", force: :cascade do |t|
+    t.integer "build_id"
+    t.integer "part_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "builds", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "notes"
+    t.boolean "current_build"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "specs"
+    t.string "notes"
+    t.string "part_type"
+    t.boolean "frame"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

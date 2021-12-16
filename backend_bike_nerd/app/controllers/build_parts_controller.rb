@@ -1,0 +1,2 @@
+class BuildPartsController < ApplicationController
+end

@@ -57,34 +57,32 @@ trek_checkpoint_gravel = Build.create(name: "trek checkpoint - gravel", image:"h
 
 trek_checkpoint_road = Build.create(name: "trek checkpoint - road", image:"https://trek.scene7.com/is/image/TrekBicycleProducts/CheckpointSL5_21_32558_B_Primary?$responsive-pjpg$&cache=on,on&wid=800&hei=600", notes:"rode my first century on this puppy. everything stock except for brooks cambium saddle. upgraded the frame to gravel after the century to make it more versatile", current_build:false, user_id:james.id)
 
-#partbuilds 
+#buildparts 
+pb1 = BuildPart.create(build_id: basket_bike.id, part_id: vintage_rockhopper_frame.id)
+pb2 = BuildPart.create(build_id: basket_bike.id, part_id: wald_basket.id)
+pb3 = BuildPart.create(build_id: basket_bike.id, part_id: maxxis_dth_tires.id)
+pb4 = BuildPart.create(build_id: basket_bike.id, part_id: clown_horn.id)
+pb5 = BuildPart.create(build_id: basket_bike.id, part_id: cellphone_holster.id)
+pb6 = BuildPart.create(build_id: basket_bike.id, part_id: swift_rando_pocket.id)
+pb7 = BuildPart.create(build_id: basket_bike.id, part_id: esi_grips_blue.id)
+pb8 = BuildPart.create(build_id: basket_bike.id, part_id: stamp_pedals_blue.id)
 
-pb1 = BuildPart.create(basket_bike.id, vintage_rockhopper_frame.id)
-pb2 = BuildPart.create(basket_bike.id, wald_basket.id)
-pb3 = BuildPart.create(basket_bike.id, maxxis_dth_tires.id)
-pb4 = BuildPart.create(basket_bike.id, clown_horn.id)
-pb5 = BuildPart.create(basket_bike.id, cellphone_holster.id)
-pb6 = BuildPart.create(basket_bike.id, swift_rando_pocket.id)
-pb7 = BuildPart.create(basket_bike.id, esi_grips_blue.id)
-pb8 = BuildPart.create(basket_bike.id, stamp_pedals_blue.id)
+pb9 = BuildPart.create(build_id: single_speed.id, part_id: single_speed_frame.id)
+pb10 = BuildPart.create(build_id: single_speed.id, part_id: vp_pedals.id)
+pb11 = BuildPart.create(build_id: single_speed.id, part_id: stem_bag.id)
+pb12 = BuildPart.create(build_id: single_speed.id, part_id: esi_grips_red.id)
+pb13 = BuildPart.create(build_id: single_speed.id, part_id: gatorskins.id)
 
-pb9 = BuildPart.create(single_speed.id, single_speed_frame.id)
-pb10 = BuildPart.create(single_speed.id, vp_pedals.id)
-pb11 = BuildPart.create(single_speed.id, stem_bag.id)
-pb12 = BuildPart.create(single_speed.id, esi_grips_red.id)
-pb13 = BuildPart.create(single_speed.id, gatorskins.id)
+pb14 = BuildPart.create(build_id: trek_checkpoint_gravel.id, part_id: trek_checkpoint_frame.id)
+pb15 = BuildPart.create(build_id: trek_checkpoint_gravel.id, part_id: cambium_saddle.id)
+pb16 = BuildPart.create(build_id: trek_checkpoint_gravel.id, part_id: old_spd_pedals.id)
+pb17 = BuildPart.create(build_id: trek_checkpoint_gravel.id, part_id: teravail_cannonballs.id)
+pb18 = BuildPart.create(build_id: trek_checkpoint_gravel.id, part_id: supa_wide_bars.id)
 
-pb14 = BuildPart.create(trek_checkpoint_gravel.id, trek_checkpoint_frame.id)
-pb15 = BuildPart.create(trek_checkpoint_gravel.id, cambium_saddle.id)
-pb16 = BuildPart.create(trek_checkpoint_gravel.id, old_spd_pedals.id)
-pb17 = BuildPart.create(trek_checkpoint_gravel.id, teravail_cannonballs.id)
-pb18 = BuildPart.create(trek_checkpoint_gravel.id, supa_wide_bars.id)
-
-pb19 = BuildPart.create(trek_checkpoint_road.id, trek_checkpoint_frame.id)
-pb20 = BuildPart.create(trek_checkpoint_road.id, old_spd_pedals.id)
-pb21 = BuildPart.create(trek_checkpoint_road.id, cambium_saddle.id)
-pb21 = BuildPart.create(trek_checkpoint_road.id, checkpoint_stock_bars.id)
-
+pb19 = BuildPart.create(build_id: trek_checkpoint_road.id, part_id: trek_checkpoint_frame.id)
+pb20 = BuildPart.create(build_id: trek_checkpoint_road.id, part_id: old_spd_pedals.id)
+pb21 = BuildPart.create(build_id: trek_checkpoint_road.id, part_id: cambium_saddle.id)
+pb21 = BuildPart.create(build_id: trek_checkpoint_road.id, part_id: checkpoint_stock_bars.id)
 
 
 

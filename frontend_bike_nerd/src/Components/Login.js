@@ -53,7 +53,7 @@ const Login= ({setCurrentUser, currentUser, setUserLoaded, userLoaded}) => {
         console.log(res);
           if (res.ok) {
             // setCurrentUser(null)
-            setUserLoaded(false)
+            // setUserLoaded(false)
             console.log('you logged out')
             navigate("/login")
           }

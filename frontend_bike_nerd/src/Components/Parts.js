@@ -29,7 +29,7 @@ function Parts() {
         <>
         <h1>PARTS</h1>
 
-        <button class= "redirect_btn"> <Link class="redirect" to="/Part_form"> create new Part </Link></button>
+        <button class= "redirect_btn"> <Link class="redirect" to="/part_form"> create new Part </Link></button>
         <div id="partCardsDiv">
         {PartList.map((part) => {
             return (

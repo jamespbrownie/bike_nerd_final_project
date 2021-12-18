@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function NewPartForm() {
 
     const [formError, setFormError] = useState(false)
     let navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         name: "",
-        username: "",
-        password: "",
-        profile_icon: "",
-        bio: "",
+        image: "",
+        specs: "",
+        notes: "",
+        part_type: "",
+        frame: ""
       });
     
     const handleChange = (e) => {
@@ -20,11 +21,12 @@ function SignUp() {
           ...formData,
           [e.target.name]: e.target.value,
         });
+        console.log(formData)
     };
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("/signup", {
+        fetch("/parts", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -39,7 +41,7 @@ function SignUp() {
               console.log(user)
     
             })
-            .then(() => navigate("/"))
+            .then(() => navigate("/parts"))
           } else {
             res.json().then((errors) => {
               console.error(errors);
@@ -61,23 +63,32 @@ function SignUp() {
       </div>
 
       <div class="form-group">
-        <label >email</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} class="form-control"  placeholder="email"/>
+        <label >image</label>
+        <input type="text" name="image" value={formData.image} onChange={handleChange} class="form-control"  placeholder="image URL"/>
       </div>
 
       <div class="form-group">
-        <label for="exampleInputPassword1">password</label>
-        <input type="text" name="password" value={formData.password} onChange={handleChange} class="form-control" id="exampleInputPassword1" placeholder="password"/>
+        <label >specs</label>
+        <input type="text" name="specs" value={formData.specs} onChange={handleChange} class="form-control" placeholder="specs"/>
       </div>
 
       <div class="form-group">
-        <label >profile photo</label>
-        <input type="text" name="profile_icon" value={formData.profile_icon} onChange={handleChange} class="form-control"  placeholder="enter a URL"/>
+        <label >notes</label>
+        <input type="text" name="notes" value={formData.notes} onChange={handleChange} class="form-control"  placeholder="notes"/>
       </div>
 
       <div class="form-group">
-        <label >bio</label>
-        <input type="text" name="bio" value={formData.bio} onChange={handleChange} class="form-control"  placeholder="write about yourself"/>
+        <label >part_type</label>
+        <input type="text" name="part_type" value={formData.part_type} onChange={handleChange} class="form-control"  placeholder="what kind of part is this?"/>
+      </div>
+
+      <div class="form-group">
+        <label >is this part a frame?</label><br/>
+        <label>true</label>
+        <input type="radio" name="frame" value={formData.frame} onChange={handleChange} class="form-control"  placeholder="what kind of part is this?"/>
+        <label>false</label>
+        <input type="radio" name="frame" value={formData.frame} onChange={handleChange}  />
+        
       </div>
       
       {formError? <h3 className="error" >invalid form data</h3>:null}
@@ -90,4 +101,4 @@ function SignUp() {
         </>
     )
 }
-export default SignUp
+export default NewPartForm

@@ -8,6 +8,7 @@ import Login from './Components/Login';
 import BuildDetail from './Components/BuildDetail';
 import PartDetail from './Components/PartDetail';
 import SignUp from './Components/SignUp';
+import NewPartForm from './Components/NewPartForm';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -54,6 +55,7 @@ function App() {
             <Route path = "/builds/:build_id" element={<BuildDetail />}/>
             <Route path = "/parts/:part_id" element={<PartDetail />}/>
             <Route path="signup" element={<SignUp/>}/>
+            <Route path="part_form" element={<NewPartForm/>}/>
           </Routes>
         </div>
     </div>

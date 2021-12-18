@@ -12,7 +12,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: @current_user
+        if @current_user
+            render json: @current_user
+        else  
+            render json: "please log in", status: :unprocessable_entity
+        end 
     end
 
     private

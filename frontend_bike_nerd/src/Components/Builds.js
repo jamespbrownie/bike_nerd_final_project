@@ -33,7 +33,7 @@ function Builds() {
         <div id="buildCardsDiv">
         {buildList.map((build) => {
             return (
-                <div id="buildCardsDiv">
+                <div className="listDiv">
                     <BuildCard 
                     setEdited={setEdited} edited={edited}
                     build={build} 

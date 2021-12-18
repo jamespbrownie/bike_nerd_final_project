@@ -33,7 +33,7 @@ function Parts() {
         <div id="partCardsDiv">
         {PartList.map((part) => {
             return (
-                <div>
+                <div className="listDiv">
                     <PartCard 
                     setEdited={setEdited} edited={edited}
                     part={part} 

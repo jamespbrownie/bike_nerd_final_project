@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function NewPartForm() {
+function NewBuildForm() {
     
     const [formError, setFormError] = useState(false)
     let navigate = useNavigate()
@@ -10,10 +10,8 @@ function NewPartForm() {
     const [formData, setFormData] = useState({
         name: "",
         image: "",
-        specs: "",
         notes: "",
-        part_type: "",
-        frame: ""
+        current_build:"",
       });
     
     const handleChange = (e) => {
@@ -25,7 +23,7 @@ function NewPartForm() {
     console.log(formData)
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("/parts", {
+        fetch("/builds", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -40,7 +38,7 @@ function NewPartForm() {
               console.log(user)
     
             })
-            .then(() => navigate("/parts"))
+            .then(() => navigate("/builds"))
           } else {
             res.json().then((errors) => {
               console.error(errors);
@@ -54,11 +52,11 @@ function NewPartForm() {
 
     return (
         <>
-    <p>add your new part here</p>
+    <p>create your new build here</p>
       <form id="signUpForm" onSubmit={handleSubmit}>
       <div class="form-group">
         <label >name</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} class="form-control"  placeholder="part name"/>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} class="form-control"  placeholder="build name"/>
       </div>
 
       <div class="form-group">
@@ -67,27 +65,16 @@ function NewPartForm() {
       </div>
 
       <div class="form-group">
-        <label >specs</label>
-        <textarea type="text" name="specs" value={formData.specs} onChange={handleChange} class="form-control" placeholder="specs"/>
-      </div>
-
-      <div class="form-group">
         <label >notes</label>
         <textarea type="text" name="notes" value={formData.notes} onChange={handleChange} class="form-control"  placeholder="notes"/>
       </div>
 
       <div class="form-group">
-        <label >part_type</label>
-        <input type="text" name="part_type" value={formData.part_type} onChange={handleChange} class="form-control"  placeholder="what kind of part is this?"/>
-      </div>
-
-      <div class="form-group">
-        <label >is this part a frame?</label><br/>
+        <label >is this part a current build?</label><br/>
         <label>true</label>
-        <input type="radio" name="frame" value={true} onChange={handleChange} />
+        <input type="radio" name="current_build" value={true} onChange={handleChange} />
         <label>false</label>
-        <input type="radio" name="frame" value={false} onChange={handleChange}  />
-        
+        <input type="radio" name="current_build" value={false} onChange={handleChange}  />
       </div>
       
       {formError? <h3 className="error" >invalid form data</h3>:null}
@@ -99,4 +86,4 @@ function NewPartForm() {
         </>
     )
 }
-export default NewPartForm
+export default NewBuildForm

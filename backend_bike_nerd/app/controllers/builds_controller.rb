@@ -1,7 +1,7 @@
 class BuildsController < ApplicationController
     def index
         builds = current_user.builds
-        render json: builds #.order(created_at: :desc)
+        render json: builds.order(created_at: :desc)
     end
 
     def show
@@ -15,6 +15,8 @@ class BuildsController < ApplicationController
 
     def create
         build = Build.create(build_params)
+        build.user = @current_user
+        build.save
         if build.valid? 
             render json: build, status: :created
         else 
@@ -35,6 +37,7 @@ class BuildsController < ApplicationController
     def destroy
         build = Build.find_by(id: params[:id])
         if build 
+            build.build_parts.destroy_all
             build.destroy
             head :no_content
         else  
@@ -45,6 +48,6 @@ class BuildsController < ApplicationController
     private
 
     def build_params
-        params.permit(:name, :image, :notes, :current_build, :user_id)
+        params.permit(:name, :image, :notes, :current_build)
     end
 end

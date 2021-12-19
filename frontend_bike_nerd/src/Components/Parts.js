@@ -19,17 +19,17 @@ function Parts() {
             })
     }, [edited])
 
-    function handleDeletePart(deletedPart) {
-        setParts((parts) =>
-          parts.filter((part) => part.id !== deletedPart.id)
-        );
-    }
+    // function rerenderDeletedPart(deletedPart) {
+    //     setParts((parts) =>
+    //       parts.filter((part) => part.id !== deletedPart.id)
+    //     );
+    // }
 
     return (
         <>
         <h1>PARTS</h1>
 
-        <button class= "redirect_btn"> <Link class="redirect" to="/part_form"> create new Part </Link></button>
+        <button class= "redirect_btn"> <Link class="redirect" to="/part_form"> add a new part </Link></button>
         <div id="partCardsDiv">
         {PartList.map((part) => {
             return (
@@ -37,7 +37,7 @@ function Parts() {
                     <PartCard 
                     setEdited={setEdited} edited={edited}
                     part={part} 
-                    onDeletePart={handleDeletePart}
+                    // rerenderDeletedPart={rerenderDeletedPart}
                     />
                 </div>
             )})

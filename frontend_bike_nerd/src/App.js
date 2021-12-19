@@ -9,11 +9,12 @@ import BuildDetail from './Components/BuildDetail';
 import PartDetail from './Components/PartDetail';
 import SignUp from './Components/SignUp';
 import NewPartForm from './Components/NewPartForm';
+import NewBuildForm from './Components/NewBuildForm';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [userLoaded, setUserLoaded] = useState(false);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   useEffect(() => {
     fetch('/me')
@@ -56,6 +57,7 @@ function App() {
             <Route path = "/parts/:part_id" element={<PartDetail />}/>
             <Route path="signup" element={<SignUp/>}/>
             <Route path="part_form" element={<NewPartForm/>}/>
+            <Route path="build_form" element={<NewBuildForm/>}/>
           </Routes>
         </div>
     </div>

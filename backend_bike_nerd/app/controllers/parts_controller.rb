@@ -16,6 +16,8 @@ class PartsController < ApplicationController
 
     def create
         part = Part.create(part_params)
+        part.user = @current_user
+        part.save
         if part.valid? 
             render json: part, status: :created
         else 
@@ -46,7 +48,7 @@ class PartsController < ApplicationController
     private
 
     def part_params
-        params.permit(:name, :image, :specs, :notes, :part_type, :frame, :user_id)
+        params.permit(:name, :image, :specs, :notes, :part_type, :frame)
 
     end
 

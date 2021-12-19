@@ -1,18 +1,18 @@
 class BuildPartsController < ApplicationController
     
     def index
-        build_parts = BuildPart.all
+        build_parts = @current_user.build_parts.all
         render json: build_parts.order(created_at: :desc)
     end
 
-    # def show
-    #     bp = current_user.build_parts.find_by(id: params[:id])
-    #     if build 
-    #         render json: bp
-    #     else 
-    #         render json: {error: "build-part not found"}, status: :not_found
-    #     end
-    # end
+    def show
+        bp = @current_user.build_parts.find_by(id: params[:id])
+        if bp 
+            render json: bp, status: :ok
+        else 
+            render json: {error: "build-part not found"}, status: :not_found
+        end
+    end
 
     def create
         buildPart = BuildPart.create(build_part_params)
@@ -24,12 +24,12 @@ class BuildPartsController < ApplicationController
     end
 
     def destroy
-        buildPart = BuildPart.find_by(id: params[:id])
+        buildPart = @current_user.build_parts.find_by(id: params[:id])
         if buildPart 
             buildPart.destroy
             head :no_content
         else  
-            render json: { error: "build not found"}, status: :not_found
+            render json: { error: "build_part not found"}, status: :not_found
         end
     end
 

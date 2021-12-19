@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :build_parts, only: [:index, :create, :destroy]
+  resources :build_parts, only: [:index, :show, :create, :destroy]
   resources :builds, only: [:index, :show, :create, :destroy]
   resources :parts, only: [:index, :show, :create, :destroy]
   resources :users, only: [:show, :create]

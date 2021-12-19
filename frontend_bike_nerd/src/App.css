@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+*{
+  background-color: rgb(90, 95, 105);
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -176,4 +181,13 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
   grid-auto-rows: minmax(3rem, auto);
+}
+
+.xBtn{
+  width: 2rem;
+  height: 2rem;
+  padding: .25rem;
+  margin: .25rem;
+  /* display: inline-block; */
+  /* justify-content:right; */
 }

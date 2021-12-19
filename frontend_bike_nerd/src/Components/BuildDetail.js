@@ -8,7 +8,8 @@ function BuildDetail({rerenderDeletedBuild}) {
     const {build_id} = useParams()
     let navigate = useNavigate()
     const [partSelector, setPartSelector] = useState(false)
-
+    const [deletePartButtons, setDeletePartButtons] = useState(false)
+    const [deleted, setDeleted] = useState(false) 
 
     useEffect(() => {
         fetch(`/builds/${build_id}`)
@@ -16,8 +17,8 @@ function BuildDetail({rerenderDeletedBuild}) {
             .then((build) => {
                 setBuild(build)                
             })
-    }, [])
-    console.log(build.parts);
+    }, [deleted])
+    console.log(build.build_parts);
 
     function confirmDelete(){
         let result = window.confirm("delete this build?")
@@ -31,7 +32,8 @@ function BuildDetail({rerenderDeletedBuild}) {
         }).then((res) => {
             console.log(res)
           if (res.ok) {
-            navigate("/builds");
+            // navigate("/builds");
+            setDeleted(!deleted)
           }
         });
     }
@@ -39,6 +41,22 @@ function BuildDetail({rerenderDeletedBuild}) {
     function showPartSelector() {
         setPartSelector(!partSelector)
     }
+
+    function showDeleteButtons() {
+        setDeletePartButtons(!deletePartButtons)
+    }
+
+    function removePart(build_part_id){
+        console.log(build_part_id);
+        fetch(`/build_parts/${build_part_id}`, {
+            method: "DELETE",
+          }).then((res) => {
+              console.log(res)
+          }).then(navigate(`/builds/${build_id}`)
+        );
+
+    }
+
 
     return (
         <div>
@@ -52,14 +70,17 @@ function BuildDetail({rerenderDeletedBuild}) {
         <h1>parts:</h1>
         <button onClick={showPartSelector}>add parts</button>
         {partSelector? <PartSelector build={build} /> : null}
-
+        <button onClick={showDeleteButtons}> remove parts </button>
 
         <div id="build_detail_parts">
-        {build.parts? build.parts.map((part) => {
+        {build.build_parts? build.build_parts.map((build_part) => {
             return (
-                <>
-            <PartCard part={part} />
-                </>
+                <div>
+                {deletePartButtons? <button 
+                onClick={() => removePart(build_part.id)}
+                className="xBtn"> x </button> : null}
+            <PartCard part={build_part.part}></PartCard>
+                </div>
             )
         }): null}
         </div>

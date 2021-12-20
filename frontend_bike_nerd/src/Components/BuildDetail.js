@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import {Link, useParams, useNavigate} from "react-router-dom"
 import PartCard from "./PartCard"
 import PartSelector from "./PartSelector"
+import BuildEditForm from "./BuildEditForm"
 
 function BuildDetail({rerenderDeletedBuild}) {
     const [build, setBuild] = useState([])
@@ -9,7 +10,9 @@ function BuildDetail({rerenderDeletedBuild}) {
     let navigate = useNavigate()
     const [partSelector, setPartSelector] = useState(false)
     const [deletePartButtons, setDeletePartButtons] = useState(false)
-    const [deleted, setDeleted] = useState(false) 
+    // const [deletedBuildPart, setDeletedBuildPart] = useState(false) 
+    const [showEditForm, setShowEditForm] = useState(false)
+
 
     useEffect(() => {
         fetch(`/builds/${build_id}`)
@@ -17,11 +20,11 @@ function BuildDetail({rerenderDeletedBuild}) {
             .then((build) => {
                 setBuild(build)                
             })
-    }, [deleted])
+    }, [showEditForm])
     console.log(build.build_parts);
 
     function confirmDelete(){
-        let result = window.confirm("delete this build?")
+        let result = window.confirm(`are you sure you want to delete ${build.name}?`)
         if (result) {
             handleDeleteBuild()
         }
@@ -32,8 +35,8 @@ function BuildDetail({rerenderDeletedBuild}) {
         }).then((res) => {
             console.log(res)
           if (res.ok) {
-            // navigate("/builds");
-            setDeleted(!deleted)
+            navigate("/builds");
+            // setDeleted(!deleted)
           }
         });
     }
@@ -52,25 +55,27 @@ function BuildDetail({rerenderDeletedBuild}) {
             method: "DELETE",
           }).then((res) => {
               console.log(res)
-          }).then(navigate(`/builds/${build_id}`)
-        );
-
+              setBuild(build)
+          }).then(navigate(`/builds/${build_id}`))
     }
 
 
     return (
         <div>
-        <button className="deleteButton" onClick={confirmDelete}>delete build</button>
         <h1>{build.name}</h1>
             <img className="buildImageDetail" src={build.image}/>
+            {showEditForm? <BuildEditForm setShowEditForm={setShowEditForm} build={build}/> : null}
             <p>specs: {build.specs}</p>
             <p>notes: {build.notes}</p>
             <p>current build? {build.current_build? "yes": "no"}</p>
 
+            <button className="deleteButton" onClick={() => setShowEditForm(!showEditForm)}>edit build</button> 
+            <button className="deleteButton" onClick={confirmDelete}>delete build</button>
+
         <h1>parts:</h1>
-        <button onClick={showPartSelector}>add parts</button>
+        <button onClick={showPartSelector}>add parts to build</button>
         {partSelector? <PartSelector build={build} /> : null}
-        <button onClick={showDeleteButtons}> remove parts </button>
+        <button onClick={showDeleteButtons}> remove parts from build </button>
 
         <div id="build_detail_parts">
         {build.build_parts? build.build_parts.map((build_part) => {

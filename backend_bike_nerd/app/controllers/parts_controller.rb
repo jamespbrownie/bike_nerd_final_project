@@ -26,7 +26,7 @@ class PartsController < ApplicationController
     end
 
     def update
-        part = Part.find_by(id: params[:id])
+        part = current_user.parts.find_by(id: params[:id])
         if part
             part.update(part_params)
             render json: part, status:200

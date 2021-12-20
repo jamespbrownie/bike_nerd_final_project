@@ -5,7 +5,7 @@ function Home() {
 
         {/* google maps API plugin  */}
         <iframe src="https://storage.googleapis.com/maps-solutions-syet4wfsr4/locator-plus/locator-plus.html"
-        width="100%" height="100%"
+        width="400vm" height="800vm"
         // style="border:0;"
         loading="lazy">
         </iframe>

@@ -25,7 +25,7 @@ class BuildsController < ApplicationController
     end
 
     def update
-        build = Build.find_by(id: params[:id])
+        build = current_user.builds.find_by(id: params[:id])
         if build
             build.update(build_params)
             render json: build, status:200

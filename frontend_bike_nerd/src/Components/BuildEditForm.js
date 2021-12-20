@@ -4,10 +4,10 @@ import {useEffect, useState} from "react"
 function BuildEditForm({build, setShowEditForm}) {
     let navigate = useNavigate()
     const [formData, setFormData] = useState({
-        name: "",
-        image: "",
-        notes: "",
-        current_build: ""
+        name: `${build.name}`,
+        image: `${build.image}`,
+        notes: `${build.notes}`,
+        current_build: `${build.current_build}`
         // user_id: `${garden.user_id}`
     });
     const handleChange = (e) => {

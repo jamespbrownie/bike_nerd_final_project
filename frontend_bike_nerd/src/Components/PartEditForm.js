@@ -4,12 +4,12 @@ import {useEffect, useState} from "react"
 function PartEditForm({part, setShowEditForm}) {
     let navigate = useNavigate()
     const [formData, setFormData] = useState({
-        name: "",
-        image: "",
-        specs: "",
-        notes: "",
-        part_type: "",
-        frame: ""
+        name: `${part.name}`,
+        image: `${part.image}`,
+        specs: `${part.specs}`,
+        notes: `${part.notes}`,
+        part_type: `${part.part_type}`,
+        frame: `${part.frame}`
         // user_id: `${garden.user_id}`
     });
     const handleChange = (e) => {
@@ -18,6 +18,7 @@ function PartEditForm({part, setShowEditForm}) {
           [e.target.name]: e.target.value,
         });
     };
+    console.log(formData);
       const handleSubmit = (event) => {
         event.preventDefault();
         fetch(`/parts/${part.id}`, {

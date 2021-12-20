@@ -65,7 +65,6 @@ function BuildDetail({rerenderDeletedBuild}) {
         <h1>{build.name}</h1>
             <img className="buildImageDetail" src={build.image}/>
             {showEditForm? <BuildEditForm setShowEditForm={setShowEditForm} build={build}/> : null}
-            <p>specs: {build.specs}</p>
             <p>notes: {build.notes}</p>
             <p>current build? {build.current_build? "yes": "no"}</p>
 

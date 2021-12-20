@@ -159,6 +159,10 @@
   height: 2.5rem;
 }
 
+.loginButton:onClick{
+  
+}
+
 #logOutBtn{
   border: solid rgb(255, 120, 120) 0.25rem;
 }
@@ -197,4 +201,10 @@
   margin: .25rem;
   /* display: inline-block; */
   /* justify-content:right; */
+}
+
+.mapInsert{
+  justify-content: center;
+  padding: 1vw;
+  margin: 1vw;
 }

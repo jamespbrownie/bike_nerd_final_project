@@ -48,7 +48,7 @@ function App() {
       </div>
         <div>
           <Routes>
-            <Route path="/" element={<Home />}/>
+            <Route path="/" element={<Home userLoaded={userLoaded} currentUser={currentUser}/>}/>
             <Route path="parts" element={<Parts />}/>
             <Route path="builds" element={<Builds />}/>
             <Route path="login" setCurrentUser={setCurrentUser} currentUser={currentUser} userLoaded={userLoaded} setUserLoaded={setUserLoaded} element={<Login />}/>

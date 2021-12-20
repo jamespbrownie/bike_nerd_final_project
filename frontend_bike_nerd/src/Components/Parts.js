@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react"
 import {Link} from "react-router-dom"
 import PartCard from "./PartCard"
+import BikeShopMap from "./BikeShopMap"
 
 
 function Parts() {
 
     const [edited, setEdited] = useState(true)
     const [PartList, setParts] = useState([])
+    const [showMap, setShowMap] = useState(false)
  
 
     useEffect(() => {
@@ -29,7 +31,11 @@ function Parts() {
         <>
         <h1>PARTS</h1>
 
-        <button class= "redirect_btn"> <Link class="redirect" to="/part_form"> add a new part </Link></button>
+        <button className="mapInsert"> <Link to="/part_form"> add a new part </Link></button>
+        <button className="mapInsert" onClick={() => setShowMap(!showMap)} >i need more parts!</button>
+
+        {showMap? <BikeShopMap/> : null}
+
         <div id="partCardsDiv">
         {PartList.map((part) => {
             return (

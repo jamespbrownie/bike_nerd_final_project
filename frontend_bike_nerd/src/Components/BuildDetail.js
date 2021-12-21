@@ -68,18 +68,18 @@ function BuildDetail({rerenderDeletedBuild}) {
             <p>notes: {build.notes}</p>
             <p>current build? {build.current_build? "yes": "no"}</p>
 
-            <button className="deleteButton" onClick={() => setShowEditForm(!showEditForm)}>edit build</button> 
-            <button className="deleteButton" onClick={confirmDelete}>delete build</button>
+            <button className="btn" onClick={() => setShowEditForm(!showEditForm)}>edit build</button> 
+            <button className="btn" onClick={confirmDelete}>delete build</button>
 
         <h1>parts:</h1>
-        <button onClick={showPartSelector}>add parts to build</button>
+        <button className="btn" onClick={showPartSelector}>add parts to build</button>
         {partSelector? <PartSelector build={build} /> : null}
-        <button onClick={showDeleteButtons}> remove parts from build </button>
+        <button className="btn" onClick={showDeleteButtons}> remove parts from build </button>
 
         <div id="build_detail_parts">
         {build.build_parts? build.build_parts.map((build_part) => {
             return (
-                <div>
+                <div className="listDiv">
                 {deletePartButtons? <button 
                 onClick={() => removePart(build_part.id)}
                 className="xBtn"> x </button> : null}

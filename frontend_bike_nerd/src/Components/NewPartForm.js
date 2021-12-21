@@ -58,30 +58,30 @@ function NewPartForm() {
       <form id="signUpForm" onSubmit={handleSubmit}>
       <div class="form-group">
         <label >name</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} class="form-control"  placeholder="part name"/>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} class="form-control"  placeholder="part name"required />
       </div>
 
       <div class="form-group">
         <label >image</label>
-        <input type="text" name="image" value={formData.image} onChange={handleChange} class="form-control"  placeholder="image URL"/>
+        <input type="text" name="image" value={formData.image} onChange={handleChange} class="form-control"  placeholder="image URL" required />
       </div>
 
       <div class="form-group">
         <label >specs</label>
-        <textarea type="text" name="specs" value={formData.specs} onChange={handleChange} class="form-control" placeholder="specs"/>
+        <textarea type="text" name="specs" value={formData.specs} onChange={handleChange} class="form-control" placeholder="specs" required />
       </div>
 
       <div class="form-group">
         <label >notes</label>
-        <textarea type="text" name="notes" value={formData.notes} onChange={handleChange} class="form-control"  placeholder="notes"/>
+        <textarea type="text" name="notes" value={formData.notes} onChange={handleChange} class="form-control"  placeholder="notes" required />
       </div>
 
       <div class="form-group">
         <label >part_type</label>
-        <input type="text" name="part_type" value={formData.part_type} onChange={handleChange} class="form-control"  placeholder="what kind of part is this?"/>
+        <input type="text" name="part_type" value={formData.part_type} onChange={handleChange} class="form-control"  placeholder="what kind of part is this?" required />
       </div>
 
-      <div class="form-group">
+      <div class="form-group" >
         <label >is this part a frame?</label><br/>
         <label>true</label>
         <input type="radio" name="frame" value={true} onChange={handleChange} />

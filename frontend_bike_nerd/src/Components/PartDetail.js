@@ -45,9 +45,9 @@ function PartDetail({rerenderDeletedPart}) {
         <p>specs: {part.specs}</p>
         <p>notes: {part.notes}</p>
 
-        <button className="deleteButton" onClick={() => setShowEditForm(!showEditForm)}>edit part</button>  
+        <button className="btn" onClick={() => setShowEditForm(!showEditForm)}>edit part</button>  
 
-        <button className="deleteButton" onClick={confirmDelete}>delete part</button>
+        <button className="btn" onClick={confirmDelete}>delete part</button>
 
         </div>
     )

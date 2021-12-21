@@ -23,7 +23,7 @@ function Builds() {
         <>
         <h1>BUILDS</h1>
 
-        <button class= "redirect_btn"> <Link class="redirect" to="/build_form"> create a new build </Link></button>
+        <button className="btn"> <Link class="btnLink" to="/build_form"> create a new build </Link></button>
         <div id="buildCardsDiv">
         {buildList.map((build) => {
             return (

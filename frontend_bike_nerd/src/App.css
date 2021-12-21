@@ -11,7 +11,13 @@
 
 }
 
+.redirect{
+  text-decoration: none;
+}
 
+div{
+  justify-content: center;
+}
 
 .App-logo {
   height: 40vmin;
@@ -107,6 +113,8 @@
 .partCardName {
   font-size: 3vw;
   /* width: 100%; */
+  text-decoration: none;
+  color:rgb(123, 123, 123)
 }
 
 #buildCardsDiv { 
@@ -137,9 +145,20 @@
 
 .listDiv{
   width: auto;
-  border: solid rgb(0, 0, 0) 0.25rem;
+  border: none rgb(0, 0, 0) 0.05rem;
   padding: .5rem;
-  border-radius: 1rem;
+  border-radius: .25rem;
+  box-shadow: 2px 2px 2px 1px #dfdfdf;
+  transition-duration: 600ms;
+}
+
+.listDiv:hover{
+  width: auto;
+  border: solid rgb(222, 222, 222) 0.05rem;
+  padding: .5rem;
+  border-radius: .25rem;
+  box-shadow: 2px 2px 2px 1px #677dff;
+  transform: scale(1.02);
 }
 
 .error{
@@ -159,9 +178,9 @@
   height: 2.5rem;
 }
 
-.loginButton:onClick{
+/* .loginButton:onClick{
   
-}
+} */
 
 #logOutBtn{
   border: solid rgb(255, 120, 120) 0.25rem;
@@ -186,6 +205,7 @@
 }
 
 #build_detail_parts{
+  justify-content: center;
   padding: 1rem;
   width: 80%;
   display: grid;
@@ -207,4 +227,35 @@
   justify-content: center;
   padding: 1vw;
   margin: 1vw;
+}
+
+.btn{
+  width: 18vw;
+  height: 8vw;
+  /* padding: 3vw; */
+  margin: 3vw;
+  box-shadow: ;
+  box-shadow: 2px 2px 2px 1px #dfdfdf;
+  color:rgb(123, 123, 123);
+  font-size: 1.75vw;
+  border-radius: 1vw;
+  /* text-decoration: none; */
+}
+
+.btn:hover{
+  background-color: rgb(81, 130, 255);
+  color: white;
+  box-shadow: 2px 2px 2px 1px #dcffcb;
+
+}
+.btn:active{
+  background-color: rgb(32, 75, 184);
+}
+
+.btnLink{
+  text-decoration: none;
+  color:rgb(123, 123, 123);
+}
+.btnLink:hover{
+  color: white;
 }

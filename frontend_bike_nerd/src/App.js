@@ -60,6 +60,7 @@ function App() {
             <Route path="build_form" element={<NewBuildForm/>}/>
           </Routes>
         </div>
+        <img height="200px" src="https://media.istockphoto.com/vectors/bicycle-wheel-black-vector-id543977438"/>
     </div>
   );
 }

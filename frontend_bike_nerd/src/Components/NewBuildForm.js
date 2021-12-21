@@ -56,17 +56,17 @@ function NewBuildForm() {
       <form id="signUpForm" onSubmit={handleSubmit}>
       <div class="form-group">
         <label >name</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} class="form-control"  placeholder="build name"/>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} class="form-control"  placeholder="build name" required/>
       </div>
 
       <div class="form-group">
         <label >image</label>
-        <input type="text" name="image" value={formData.image} onChange={handleChange} class="form-control"  placeholder="image URL"/>
+        <input type="text" name="image" value={formData.image} onChange={handleChange} class="form-control"  placeholder="image URL" required/>
       </div>
 
       <div class="form-group">
         <label >notes</label>
-        <textarea type="text" name="notes" value={formData.notes} onChange={handleChange} class="form-control"  placeholder="notes"/>
+        <textarea type="text" name="notes" value={formData.notes} onChange={handleChange} class="form-control"  placeholder="notes" required/>
       </div>
 
       <div class="form-group">

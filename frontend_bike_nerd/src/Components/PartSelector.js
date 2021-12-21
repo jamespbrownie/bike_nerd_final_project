@@ -48,7 +48,7 @@ function PartSelector({build}) {
                     <PartCard
                     part={part} 
                     />
-                    <button onClick={() => confirmAddPart(part)}> add to build </button>
+                    <button className="btn" onClick={() => confirmAddPart(part)}> add to build </button>
                 </div>
             )})
             }

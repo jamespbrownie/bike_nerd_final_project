@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router";
-import {useEffect, useState} from "react"
+import {useState} from "react"
 
 function PartEditForm({part, setShowEditForm}) {
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: `${part.name}`,
         image: `${part.image}`,

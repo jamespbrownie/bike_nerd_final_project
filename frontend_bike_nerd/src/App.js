@@ -10,6 +10,7 @@ import PartDetail from './Components/PartDetail';
 import SignUp from './Components/SignUp';
 import NewPartForm from './Components/NewPartForm';
 import NewBuildForm from './Components/NewBuildForm';
+import NavBar from './Components/NavBar';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -18,40 +19,42 @@ function App() {
 
   useEffect(() => {
     fetch('/me')
-        .then((r) => {
-          if (r.ok) {
+    .then((r) => {
+    console.log(r)
+      if (r.ok) {
             r.json().then((user) => {
-              setCurrentUser(user)         
+              setCurrentUser(user) 
+              setUserLoaded(true)
             })
-            .then(setUserLoaded(true))
           } else {
             r.json().then((errors) => {
-              console.error(errors)
+              console.error(`error: ${errors}`)
               setUserLoaded(false)
+
           })
         }
         })
   }, [])
 
+  console.log('currentUser HERE is', currentUser);
+  if (currentUser === null || currentUser.length === 0) {
+    console.log("currentUser is", currentUser);
+    return (
+    <div>
+      <NavBar currentUser={currentUser}/>
+      <Login/>
+    </div>
+  )}
+
   return (
     <div className="App">
-      <div id="navbar">
-        <nav >
-          {/* {userLoaded? <Link className="navButton" to="/"> hi {currentUser.name} </Link>: null} */}
-          <Link className="navButton" to="/login"> {userLoaded? "logout":"login"} </Link>
-          <Link className="navButton" to="/"> home </Link>
-          <Link className="navButton" to="/parts"> my parts </Link>
-          <Link className="navButton" to="/builds"> my builds </Link>
-        </nav>
-        <Outlet/>
-
-      </div>
+      <NavBar currentUser={currentUser}/>
         <div>
           <Routes>
             <Route path="/" element={<Home userLoaded={userLoaded} currentUser={currentUser}/>}/>
-            <Route path="parts" element={<Parts />}/>
+            <Route path="parts" element={userLoaded? <Parts userLoaded={userLoaded} /> : <Login/>}/>
             <Route path="builds" element={<Builds />}/>
-            <Route path="login" setCurrentUser={setCurrentUser} currentUser={currentUser} userLoaded={userLoaded} setUserLoaded={setUserLoaded} element={<Login />}/>
+            <Route path="login" element={<Login userLoaded={userLoaded} setUserLoaded={setUserLoaded}/>}/>
             <Route path="*" element={<p>Whoops, there's nothing here!</p>}/>
             <Route path = "/builds/:build_id" element={<BuildDetail />}/>
             <Route path = "/parts/:part_id" element={<PartDetail />}/>
@@ -60,7 +63,7 @@ function App() {
             <Route path="build_form" element={<NewBuildForm/>}/>
           </Routes>
         </div>
-        <img height="200px" src="https://media.istockphoto.com/vectors/bicycle-wheel-black-vector-id543977438"/>
+        <img id="bottomImage" height="200px" alt="bike wheel" src="https://media.istockphoto.com/vectors/bicycle-wheel-black-vector-id543977438"/>
     </div>
   );
 }

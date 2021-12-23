@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Link, useParams, useNavigate} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 import PartCard from "./PartCard"
 import PartSelector from "./PartSelector"
 import BuildEditForm from "./BuildEditForm"
@@ -21,7 +21,7 @@ function BuildDetail({rerenderDeletedBuild}) {
                 setBuild(build)                
             })
     }, [showEditForm])
-    console.log(build.build_parts);
+    // console.log(build.build_parts);
 
     function confirmDelete(){
         let result = window.confirm(`are you sure you want to delete ${build.name}?`)
@@ -40,6 +40,7 @@ function BuildDetail({rerenderDeletedBuild}) {
           }
         });
     }
+    console.log("build.parts is", build.build_parts);
 
     function showPartSelector() {
         setPartSelector(!partSelector)
@@ -54,8 +55,15 @@ function BuildDetail({rerenderDeletedBuild}) {
         fetch(`/build_parts/${build_part_id}`, {
             method: "DELETE",
           }).then((res) => {
-              console.log(res)
-              setBuild(build)
+              console.log('response is', res)
+              console.log('build in removePart is', build)
+                if (res.ok) {
+                    setBuild({
+                        ...build,
+                        build_parts: build.build_parts.filter(part => part.id !== build_part_id)
+                    })
+                }
+              
           }).then(navigate(`/builds/${build_id}`))
     }
 
@@ -63,7 +71,7 @@ function BuildDetail({rerenderDeletedBuild}) {
     return (
         <div>
         <h1>{build.name}</h1>
-            <img className="buildImageDetail" src={build.image}/>
+            <img alt="build detail" className="buildImageDetail" src={build.image}/>
             {showEditForm? <BuildEditForm setShowEditForm={setShowEditForm} build={build}/> : null}
             <p>notes: {build.notes}</p>
             <p>current build? {build.current_build? "yes": "no"}</p>
@@ -73,7 +81,7 @@ function BuildDetail({rerenderDeletedBuild}) {
 
         <h1>parts:</h1>
         <button className="btn" onClick={showPartSelector}>add parts to build</button>
-        {partSelector? <PartSelector build={build} /> : null}
+        {partSelector? <PartSelector setBuild={setBuild} build={build} /> : null}
         <button className="btn" onClick={showDeleteButtons}> remove parts from build </button>
 
         <div id="build_detail_parts">

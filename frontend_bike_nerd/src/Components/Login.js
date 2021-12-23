@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import SignUp from "./SignUp";
 
 
-const Login= ({setCurrentUser, currentUser, setUserLoaded, userLoaded}) => {
+const Login= ({setUserLoaded, userLoaded}) => {
 
   let navigate = useNavigate()
 
   const [loginError, setLoginError] = useState(false)
+  const [signUpForm, showSignUpForm] = useState(false)
   
   const [formData, setFormData] = useState({
     username: "",
@@ -55,25 +57,29 @@ const Login= ({setCurrentUser, currentUser, setUserLoaded, userLoaded}) => {
             // setCurrentUser(null)
             // setUserLoaded(false)
             console.log('you logged out')
+            // setUserLoaded(false)
+            console.log('setuserloaded', setUserLoaded)
+            setUserLoaded(false)
             navigate("/login")
+            console.log(userLoaded);
           }
         })//.then(() => setUserLoaded(false))
-  }
-
+      }
+      
     return ( 
-<>
+  <>
     {/* {userLoaded? <h1>Hi, {currentUser.name}</h1>:<h1>please log in</h1> } */}
     <form id="loginForm" onSubmit={handleSubmit}>
-      <div class="form-group">
-        <label for="exampleInputEmail1">username</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} class="form-control"  placeholder="Enter Email"/>
+      <div>
+        <label >username</label>
+        <input type="text" name="username" value={formData.username} onChange={handleChange} className="form-control"  placeholder="Enter Email"/>
       
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">password</label>
-        <input type="text" name="password" value={formData.password} onChange={handleChange} class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+      <div>
+        <label >password</label>
+        <input type="password" name="password" value={formData.password} onChange={handleChange} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
       </div>
-      <div class="form-check">
+      <div className="form-check">
       
       </div>
       {loginError? <h3 className="error" >invalid username or password</h3>:null}
@@ -82,10 +88,15 @@ const Login= ({setCurrentUser, currentUser, setUserLoaded, userLoaded}) => {
       
     </form>
       <button id ="logOutBtn" className="loginButton" onClick={handleLogout}> log out</button>
+      <button id ="logOutBtn" className="loginButton" onClick={() => showSignUpForm(!signUpForm)}> create a new account </button>
       <div id="signUpBtnDiv">
-      <Link  id="signUpBtn" to="/signup"> create a new account </Link> 
+      <div>
+      {signUpForm? <SignUp/> : null}
       </div>
 
-</>
+      {/* <Link  id="signUpBtn" to="/signup"> create a new account </Link>  */}
+      </div>
+
+  </>
 )}
 export default Login

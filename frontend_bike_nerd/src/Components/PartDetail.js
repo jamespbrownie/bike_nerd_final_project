@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {Link, useParams, useNavigate} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 import PartEditForm from "./PartEditForm"
 
 function PartDetail({rerenderDeletedPart}) {
@@ -38,7 +38,7 @@ function PartDetail({rerenderDeletedPart}) {
     return (
         <div>
         <h1>{part.name}</h1>
-        <img className="partImageDetail" src={part.image}/>
+        <img alt="part detail" className="partImageDetail" src={part.image}/>
 
         {showEditForm? <PartEditForm setShowEditForm={setShowEditForm} part={part}/> : null}
         <p>part type: {part.part_type}</p>

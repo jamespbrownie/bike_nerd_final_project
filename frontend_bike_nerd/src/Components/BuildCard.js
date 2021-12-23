@@ -5,7 +5,7 @@ function BuildCard({build}) {
     return (
         <div>
         <Link class="redirect" to={`/builds/${id}`}> 
-            <img className="buildCardImage" src={build.image}/>
+            <img alt="build" className="buildCardImage" src={build.image}/>
             <h1 className="buildCardName" >{build.name}</h1>
         </Link>
         </div>

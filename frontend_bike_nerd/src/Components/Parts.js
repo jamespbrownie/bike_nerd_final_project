@@ -7,17 +7,17 @@ import BikeShopMap from "./BikeShopMap"
 function Parts() {
 
     const [edited, setEdited] = useState(true)
-    const [PartList, setParts] = useState([])
+    const [partList, setParts] = useState([])
     const [showMap, setShowMap] = useState(false)
  
-
+    
     useEffect(() => {
         fetch('/parts')
             .then((r) => r.json())
             .then((parts) => {
                 // console.log(parts)
                 setParts(parts)
-                //console.log(parts)
+                //console.log(parts)\
             })
     }, [edited])
 
@@ -26,7 +26,7 @@ function Parts() {
     //       parts.filter((part) => part.id !== deletedPart.id)
     //     );
     // }
-
+    console.log('partList is ', {partList})
     return (
         <>
         <h1>PARTS</h1>
@@ -37,7 +37,7 @@ function Parts() {
         {showMap? <BikeShopMap/> : null}
 
         <div id="partCardsDiv">
-        {PartList.map((part) => {
+        {partList.map((part) => {
             return (
                 <div className="listDiv">
                     <PartCard 

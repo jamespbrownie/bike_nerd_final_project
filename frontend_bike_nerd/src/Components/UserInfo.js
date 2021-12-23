@@ -1,8 +1,12 @@
-function UserInfo(userLoaded, currentUser) {
+function UserInfo({userLoaded, currentUser}) {
+    console.log(currentUser);
+    console.log(userLoaded);
     return (
         <>
-        {userLoaded? <p>hi {currentUser.name}!</p> : null}
-        {userLoaded? <img height="100px" src={currentUser.profile_icon} /> : null}
+        <p>hi {currentUser.name}!</p> 
+        <img alt="user icon" height="100px" src={currentUser.profile_icon} /> 
+        <p>Your bio: {currentUser.bio}</p>
+        
         </> 
     )
 }

@@ -12,10 +12,11 @@ class UsersController < ApplicationController
     end
 
     def show
+        logger.debug "current_user 123"
         if @current_user
-            render json: @current_user
+            render json: @current_user, status: :ok
         else  
-            render json: "please log in", status: :unprocessable_entity
+            render json: {errors: ["please log in"]}, status: :unauthorized
         end 
     end
 

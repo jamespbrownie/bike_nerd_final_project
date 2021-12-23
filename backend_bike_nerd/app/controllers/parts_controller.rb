@@ -2,7 +2,11 @@ class PartsController < ApplicationController
 
     def index
         parts = current_user.parts
-        render json: parts.order(created_at: :desc)
+        if @current_user
+            render json: parts.order(created_at: :desc)
+        else  
+            render json: [], status: :unauthorized
+        end 
     end
 
     def show

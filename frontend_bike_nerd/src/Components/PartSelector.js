@@ -1,9 +1,7 @@
 import PartCard from "./PartCard"
 import {useEffect, useState} from "react"
-import {Link} from "react-router-dom"
 
-
-function PartSelector({build}) {
+function PartSelector({build, setBuild}) {
 
     const [PartList, setParts] = useState([])
 
@@ -33,7 +31,10 @@ function PartSelector({build}) {
             },
             body: JSON.stringify(newBuildPart),
           }).then((res) => res.json()).then((buildPart) => {
-              console.log(buildPart);
+            setBuild({...build,
+                build_parts: build.build_parts.concat(buildPart)
+            })
+              console.log("addPart buildPart response is", buildPart);
           })
     }
 

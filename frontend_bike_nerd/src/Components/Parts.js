@@ -9,6 +9,7 @@ function Parts() {
     const [edited, setEdited] = useState(true)
     const [partList, setParts] = useState([])
     const [showMap, setShowMap] = useState(false)
+    const [search, setSearch] = useState("");
  
     
     useEffect(() => {
@@ -21,12 +22,39 @@ function Parts() {
             })
     }, [edited])
 
+    function handlePartSearch(e) {
+        setSearch(e.target.value)
+        // setParts(search)
+        filterParts()
+    }
+    function filterParts(){
+        if (search.length > 0) {
+        setParts(partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase())))
+        } if (search === "") {
+            setParts(partList)
+        }
+    }
+
+    // const handleSearch = (e, value) => {
+    //     e.preventDefault();
+    //     setSearch(value);
+    // };
+
+    // function handleSearch() {
+    //     if (search.length > 0) {
+    //         setParts(partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase())))
+    //     } else if (search === "") {
+    //         setParts(partList)
+    //     }
+    // }
+
     // function rerenderDeletedPart(deletedPart) {
     //     setParts((parts) =>
     //       parts.filter((part) => part.id !== deletedPart.id)
     //     );
     // }
-    console.log('partList is ', {partList})
+    // console.log('partList is ', {partList})
+    console.log('search value is', {search});
     return (
         <>
         <h1>PARTS</h1>
@@ -35,6 +63,21 @@ function Parts() {
         <button className="btn" onClick={() => setShowMap(!showMap)} >{showMap? "close map" : "i need more parts!"}</button>
 
         {showMap? <BikeShopMap/> : null}
+
+        <div id="part-search-bar">
+            {/* <p>search for parts:</p> */}
+            <form
+                onChange={(e) => handlePartSearch(e)}
+            >
+            <input
+                type="text"
+                name="search"
+                // value={valueInput}
+                placeholder="search for parts by name"
+                // onChange={(e) => setSearch(e.target.value)}
+            />
+            </form>
+        </div>
 
         <div id="partCardsDiv">
         {partList.map((part) => {

@@ -23,15 +23,16 @@ function Parts() {
     }, [edited])
 
     function handlePartSearch(e) {
+        e.preventDefault();
         setSearch(e.target.value)
         // setParts(search)
         filterParts()
     }
     function filterParts(){
         if (search.length > 0) {
-        setParts(partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase())))
-        } if (search === "") {
-            setParts(partList)
+            return partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase()))
+        } else if (search === "" || search === undefined) {
+            return partList
         }
     }
 
@@ -68,6 +69,7 @@ function Parts() {
             {/* <p>search for parts:</p> */}
             <form
                 onChange={(e) => handlePartSearch(e)}
+                onSubmit={(e) => handlePartSearch(e)}
             >
             <input
                 type="text"
@@ -80,7 +82,7 @@ function Parts() {
         </div>
 
         <div id="partCardsDiv">
-        {partList.map((part) => {
+        {filterParts().map((part) => {
             return (
                 <div className="listDiv">
                     <PartCard 

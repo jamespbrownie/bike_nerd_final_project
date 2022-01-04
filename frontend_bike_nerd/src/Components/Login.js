@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import SignUp from "./SignUp";
 
 
-const Login= ({setUserLoaded, userLoaded}) => {
+const Login= ({setUserLoaded, userLoaded, setCurrentUser, currentUser}) => {
+
 
   let navigate = useNavigate()
 
@@ -22,6 +23,7 @@ const Login= ({setUserLoaded, userLoaded}) => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch("/login", {
@@ -35,11 +37,12 @@ const Login= ({setUserLoaded, userLoaded}) => {
       if (res.ok) {
         res.json().then((user) => {
           
-          // setCurrentUser(user); 
+          setCurrentUser(user); 
           console.log(user)
-
+          setUserLoaded(true)
+          navigate("/")
         })
-        .then(() => navigate("/"))
+        // .then(() => navigate("/"))
       } else {
         res.json().then((errors) => {
           console.error(errors);
@@ -60,42 +63,42 @@ const Login= ({setUserLoaded, userLoaded}) => {
             // setUserLoaded(false)
             console.log('setuserloaded', setUserLoaded)
             setUserLoaded(false)
+            setCurrentUser(null)
             navigate("/login")
             console.log(userLoaded);
           }
         })//.then(() => setUserLoaded(false))
       }
       
-    return ( 
-  <>
-    {/* {userLoaded? <h1>Hi, {currentUser.name}</h1>:<h1>please log in</h1> } */}
-    <form id="loginForm" onSubmit={handleSubmit}>
-      <div>
-        <label >username</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} className="form-control"  placeholder="Enter Email"/>
-      
-      </div>
-      <div>
-        <label >password</label>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
-      </div>
-      <div className="form-check">
-      
-      </div>
-      {loginError? <h3 className="error" >invalid username or password</h3>:null}
-      <button  className="loginButton" type="submit"> log in</button> 
-      {/* /* Need to find different way to redirect login */}
-      
-    </form>
-      <button id ="logOutBtn" className="loginButton" onClick={handleLogout}> log out</button>
-      <button id ="logOutBtn" className="loginButton" onClick={() => showSignUpForm(!signUpForm)}> create a new account </button>
+  if (currentUser == null) {
+    return (
+        <>
+        <h3> log in to start buiilding your dream bike! </h3>
+        <form id="loginForm" onSubmit={handleSubmit}>
+          <div>
+            <label >username</label>
+            <input type="text" name="username" value={formData.username} onChange={handleChange} className="form-control"  placeholder="Enter Email"/>
+          </div>
+          <div>
+            <label >password</label>
+            <input type="password" name="password" value={formData.password} onChange={handleChange} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+          </div>
+          
+          {loginError? <h3 className="error" >invalid username or password</h3>:null}
+          <button  className="loginButton" type="submit"> log in</button>       
+        </form>
+        <button id ="logOutBtn" className="loginButton" onClick={() => showSignUpForm(!signUpForm)}> create a new account </button>
       <div id="signUpBtnDiv">
-      <div>
       {signUpForm? <SignUp/> : null}
       </div>
+      </>
+  )}
 
-      {/* <Link  id="signUpBtn" to="/signup"> create a new account </Link>  */}
-      </div>
+    
+  return ( 
+  <>
+    {/* {userLoaded? <h1>Hi, {currentUser.name}</h1>:<h1>please log in</h1> } */}
+      <button id ="logOutBtn" className="loginButton" onClick={handleLogout}> log out</button>
 
   </>
 )}

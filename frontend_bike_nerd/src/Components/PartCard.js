@@ -7,7 +7,7 @@ function PartCard({part}) {
         <Link class="redirect" to={`/parts/${id}`}>
             <img alt="part" className="partCardImage" src={part.image}/>
             <h1 className="partCardName">{part.name}</h1>
-            {/* <p>{part.part_type}</p> */}
+            <h3 className="partCardType"> {part.part_type}</h3>
         </Link>
         </div>
     )

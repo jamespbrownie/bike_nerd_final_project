@@ -10,6 +10,7 @@ function Parts() {
     const [partList, setParts] = useState([])
     const [showMap, setShowMap] = useState(false)
     const [search, setSearch] = useState("");
+    const [frames, setFrames] = useState(false)
  
     
     useEffect(() => {
@@ -29,25 +30,16 @@ function Parts() {
         filterParts()
     }
     function filterParts(){
+        if (frames == true) {
+            return partList.filter((part) => part.frame == true) 
+        }
         if (search.length > 0) {
-            return partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase()))
+            return partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase()) || part.part_type.toLowerCase().includes(search.toLowerCase())) 
         } else if (search === "" || search === undefined) {
             return partList
         }
     }
 
-    // const handleSearch = (e, value) => {
-    //     e.preventDefault();
-    //     setSearch(value);
-    // };
-
-    // function handleSearch() {
-    //     if (search.length > 0) {
-    //         setParts(partList.filter((part) => part.name.toLowerCase().includes(search.toLowerCase())))
-    //     } else if (search === "") {
-    //         setParts(partList)
-    //     }
-    // }
 
     // function rerenderDeletedPart(deletedPart) {
     //     setParts((parts) =>
@@ -62,6 +54,7 @@ function Parts() {
 
         <button className="btn"> <Link className="btnLink" to="/part_form"> add a new part </Link></button>
         <button className="btn" onClick={() => setShowMap(!showMap)} >{showMap? "close map" : "i need more parts!"}</button>
+        <button className="btn" onClick={() => setFrames(!frames)}> {frames?"show all parts" : "show frames only"} </button>
 
         {showMap? <BikeShopMap/> : null}
 
@@ -80,7 +73,7 @@ function Parts() {
             />
             </form>
         </div>
-
+        <h3>showing {filterParts().length} parts</h3>
         <div id="partCardsDiv">
         {filterParts().map((part) => {
             return (

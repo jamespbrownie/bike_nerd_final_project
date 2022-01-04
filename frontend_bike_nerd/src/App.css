@@ -110,10 +110,17 @@ div{
   height: 10vw;
 }
 .partCardName {
-  font-size: 3vw;
+  font-size: 2.5vw;
   /* width: 100%; */
   text-decoration: none;
-  color:rgb(123, 123, 123)
+  color:rgb(62, 62, 62)
+}
+
+.partCardType {
+  font-size: 1.5vw;
+  /* width: 100%; */
+  text-decoration: none;
+  color:rgb(136, 136, 136)
 }
 
 #buildCardsDiv { 
@@ -157,7 +164,7 @@ div{
   padding: .5rem;
   border-radius: .25rem;
   box-shadow: 2px 2px 2px 1px #677dff;
-  transform: scale(1.02);
+  /* transform: scale(1.02); */
 }
 
 .error{

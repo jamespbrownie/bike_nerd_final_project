@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     fetch('/me')
     .then((r) => {
-    console.log(r)
+    console.log("response from /me is" , r)
       if (r.ok) {
             r.json().then((user) => {
               setCurrentUser(user) 
@@ -37,24 +37,18 @@ function App() {
   }, [])
 
   console.log('currentUser HERE is', currentUser);
-  if (currentUser === null || currentUser.length === 0) {
-    console.log("currentUser is", currentUser);
-    return (
-    <div>
-      <NavBar currentUser={currentUser}/>
-      <Login/>
-    </div>
-  )}
 
-  return (
+
+  if (currentUser !== null) {
+    return (
     <div className="App">
       <NavBar currentUser={currentUser}/>
         <div>
           <Routes>
             <Route path="/" element={<Home userLoaded={userLoaded} currentUser={currentUser}/>}/>
-            <Route path="parts" element={userLoaded? <Parts userLoaded={userLoaded} /> : <Login/>}/>
+            <Route path="parts" element={<Parts userLoaded={userLoaded}/>}/>
             <Route path="builds" element={<Builds />}/>
-            <Route path="login" element={<Login userLoaded={userLoaded} setUserLoaded={setUserLoaded}/>}/>
+            <Route path="login" element={<Login userLoaded={userLoaded} setUserLoaded={setUserLoaded} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
             <Route path="*" element={<p>Whoops, there's nothing here!</p>}/>
             <Route path = "/builds/:build_id" element={<BuildDetail />}/>
             <Route path = "/parts/:part_id" element={<PartDetail />}/>
@@ -65,7 +59,17 @@ function App() {
         </div>
         <img id="bottomImage" height="200px" alt="bike wheel" src="https://media.istockphoto.com/vectors/bicycle-wheel-black-vector-id543977438"/>
     </div>
-  );
+  )}
+
+  if (currentUser === null) {
+    console.log("currentUser is", currentUser);
+    return (
+    <div>
+      {/* {window.alert} */}
+      <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
+      <Login setCurrentUser={setCurrentUser} currentUser={currentUser} userLoaded={userLoaded} setUserLoaded={setUserLoaded}/>
+    </div>
+  )}
 }
 
 export default App

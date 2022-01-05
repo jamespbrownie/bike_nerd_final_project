@@ -11,6 +11,7 @@ import SignUp from './Components/SignUp';
 import NewPartForm from './Components/NewPartForm';
 import NewBuildForm from './Components/NewBuildForm';
 import NavBar from './Components/NavBar';
+import UserInfo from './Components/UserInfo';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -46,6 +47,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home userLoaded={userLoaded} currentUser={currentUser}/>}/>
+            <Route path="user" element={<UserInfo userLoaded={userLoaded} currentUser={currentUser}  />}/>
             <Route path="parts" element={<Parts userLoaded={userLoaded}/>}/>
             <Route path="builds" element={<Builds />}/>
             <Route path="login" element={<Login userLoaded={userLoaded} setUserLoaded={setUserLoaded} setCurrentUser={setCurrentUser} currentUser={currentUser}/>}/>
@@ -64,10 +66,11 @@ function App() {
   if (currentUser === null) {
     console.log("currentUser is", currentUser);
     return (
-    <div>
+    <div className="App">
       {/* {window.alert} */}
       <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
       <Login setCurrentUser={setCurrentUser} currentUser={currentUser} userLoaded={userLoaded} setUserLoaded={setUserLoaded}/>
+      {/* <img id="bottomImage" height="200px" alt="bike wheel" src="https://media.istockphoto.com/vectors/bicycle-wheel-black-vector-id543977438"/> */}
     </div>
   )}
 }

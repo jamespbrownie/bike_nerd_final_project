@@ -62,9 +62,10 @@ function Parts() {
             {/* <p>search for parts:</p> */}
             <form
                 onChange={(e) => handlePartSearch(e)}
-                onSubmit={(e) => handlePartSearch(e)}
+                onSubmit={(e) => e.preventDefault()}
             >
             <input
+                id="searchBar"
                 type="text"
                 name="search"
                 // value={valueInput}

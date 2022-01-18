@@ -73,7 +73,9 @@ const Login= ({setUserLoaded, userLoaded, setCurrentUser, currentUser}) => {
   if (currentUser == null) {
     return (
         <>
-        <h3> log in to start buiilding your dream bike! </h3>
+        <h1 id="title">bike nerd</h1>
+            <h1 id="emojis">🚲🔬</h1>
+        <h3 className="padding"> log in to start building your dream bike! </h3>
         <form id="loginForm" onSubmit={handleSubmit}>
           <div>
             <label >username</label>
@@ -98,6 +100,8 @@ const Login= ({setUserLoaded, userLoaded, setCurrentUser, currentUser}) => {
   return ( 
   <>
     {/* {userLoaded? <h1>Hi, {currentUser.name}</h1>:<h1>please log in</h1> } */}
+            <h1 id="title">bike nerd</h1>
+            <h1 id="emojis">🚲🔬</h1>
       <button id ="logOutBtn" className="loginButton" onClick={handleLogout}> log out</button>
 
   </>

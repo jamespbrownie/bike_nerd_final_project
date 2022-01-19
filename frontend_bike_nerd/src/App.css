@@ -7,7 +7,7 @@
 .App {
   text-align: center;
   background-image: url(./Components/images/topo-background.png);
-  background-repeat: repeat;
+  background-repeat: round;
 
 }
 
@@ -24,7 +24,7 @@
 
 #background{
   background-image: url(./Components/images/topo-background.png);
-  background-repeat: repeat;
+  background-repeat: round;
 
 }
 
@@ -39,6 +39,13 @@ form {
   /* margin: 2vw */
   margin-left: 20vw;
   margin-right: 20vw;
+}
+
+::placeholder{
+  color: var(--navy);
+  font-size: 1.75vw;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 p{
@@ -107,6 +114,7 @@ div{
   /* width: 80%; */
   margin: 3vw;
   padding: 3vw;
+  background: transparent;
 }
 
 #mission-statement {
@@ -186,12 +194,16 @@ nav{
   transform: scale(1.5);
 }
 
+.cardBackground, .redirect {
+  background: white;
+}
+
 #partCardsDiv { 
   /* justify-content: center; */
   background: transparent;
-  padding: 1rem;
+  padding: 1vw;
   display: grid;
-  grid-template-columns: repeat(4, 23vw);
+  grid-template-columns: repeat(4, 22vw);
   grid-gap: 1rem;
   grid-auto-rows: minmax(3rem, auto);
 }
@@ -201,7 +213,7 @@ nav{
   height: 10vw;
 }
 .partCardName {
-  font-size: 2.5vw;
+  font-size: 2vw;
   /* width: 100%; */
   text-decoration: none;
   color: var(--navy)
@@ -215,20 +227,22 @@ nav{
 }
 
 #buildCardsDiv { 
-  padding: 1rem;
-  width: 95%;
+  padding: 2vw;
+  /* width: 90%; */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 40vw);
   grid-gap: 1rem;
   grid-auto-rows: minmax(3rem, auto);
+  background: transparent;
+  margin: none;
 }
 
 .buildCardImage {
-  height: 30vw;
+  height: 25vw;
   /* border-radius: 1rem; */
 }
 .buildCardName {
-  font-size: 3vw;
+  font-size: 2.5vw;
   /* width: 100%; */
 }
 
@@ -245,17 +259,17 @@ nav{
   border: none rgb(0, 0, 0) 0.05rem;
   padding: .5rem;
   /* border-radius: .25rem; */
-  box-shadow: 2px 2px 2px 1px #dfdfdf;
+  box-shadow: 0.5vw 0.75vw 0px 1px var(--navy);
   transition-duration: 600ms;
   background-color: white;
 }
 
 .listDiv:hover{
   width: auto;
-  border: solid rgb(222, 222, 222) 0.05rem;
+  /* border: solid rgb(222, 222, 222) 0.05rem; */
   padding: .5rem;
   /* border-radius: .25rem; */
-  box-shadow: 2px 2px 2px 1px #677dff;
+  /* box-shadow: 2px 2px 2px 1px #677dff; */
   /* transform: scale(1.02); */
 }
 
@@ -334,14 +348,14 @@ nav{
 .btn{
   color: rgb(37, 56, 91);
   font-weight: 700;
-  width: 18vw;
-  height: 6vw;
+  width: 26vw;
+  height: 8vw;
   /* padding: 3vw; */
   margin: 3vw;
   background-color: white;
-  box-shadow: 0.5vw 0.75vw 0px 1px rgba(37, 56, 91, 1);
+  box-shadow: 0.5vw 0.75vw 0px 1px var(--navy);
   /* color:rgb(123, 123, 123); */
-  font-size: 1.7vw;
+  font-size: 2.5vw;
   /* border-radius: 1vw; */
   /* text-decoration: none; */
   cursor: pointer;
@@ -349,30 +363,31 @@ nav{
   border: none;
 }
 
+.btn:hover{
+  /* background-color: rgb(81, 130, 255); */
+  /* color: white; */
+  /* box-shadow: 2px 2px 2px 1px #dcffcb; */
+}
+.btn:active{
+  /* background-color: rgb(81, 130, 255); */
+  box-shadow: 2px 3px 2px 2px var(--navy);
+  transform: translateY(4px);
+}
+
 #searchBar{
-  width: 25vw;
+  width: 30vw;
   padding: 1.5vw;
   /* border-radius: 2vw; */
   margin: 3vw;
-  border: 2px solid white
+  border: 2px solid white;
+  /* color: var(--navy); */
 }
 
 #part-search-bar {
   background: transparent;
 }
 
-.btn:hover{
-  background-color: rgb(81, 130, 255);
-  color: white;
-  /* box-shadow: 2px 2px 2px 1px #dcffcb; */
-  
 
-}
-.btn:active{
-  background-color: rgb(81, 130, 255);
-  box-shadow: 2px 3px 2px 2px rgb(126, 126, 126);
-  transform: translateY(4px);
-}
 
 .btnLink{
   font-weight: 700;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 function PartCard({part}) {
     const {id} = part
     return (
-        <div>
+        <div className="cardBackground">
         <Link class="redirect" to={`/parts/${id}`}>
             <img alt="part" className="partCardImage" src={part.image}/>
             <h1 className="partCardName">{part.name}</h1>

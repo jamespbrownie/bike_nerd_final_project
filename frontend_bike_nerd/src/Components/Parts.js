@@ -50,7 +50,7 @@ function Parts() {
     console.log('search value is', {search});
     return (
         <>
-        <h1>PARTS</h1>
+        <h1 id="title">PARTS</h1>
 
         <button className="btn"> <Link className="btnLink" to="/part_form"> add a new part </Link></button>
         <button className="btn" onClick={() => setShowMap(!showMap)} >{showMap? "close map" : "i need more parts!"}</button>

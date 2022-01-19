@@ -31,7 +31,7 @@ function Builds() {
 
     return (
         <>
-        <h1>BUILDS</h1>
+        <h1 id="title" >BUILDS</h1>
 
         <button className="btn"> <Link class="btnLink" to="/build_form"> create a new build </Link></button>
 

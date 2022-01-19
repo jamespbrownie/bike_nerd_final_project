@@ -5,8 +5,8 @@ function Home({currentUser, userLoaded}) {
     console.log( "userLoaded in HOME is", userLoaded);
     return (
         <>
-        <div>
-            <div id="home-page">
+        <div id="home-page">
+            <div style={{background: "transparent" }}>
             <h1 id="title">bike nerd</h1>
             <h1 id="emojis">🚲🔬</h1>
             <div id="mission-statement">

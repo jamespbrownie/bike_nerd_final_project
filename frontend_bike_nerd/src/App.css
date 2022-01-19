@@ -6,9 +6,13 @@
 
 .App {
   text-align: center;
+  background-image: url(./Components/images/topo-background.png);
+  background-repeat: repeat;
+
 }
 
 *{
+  
   background-color: var(--blue);  
   color: (--navy) ; 
   padding: 0;
@@ -18,8 +22,23 @@
 
 }
 
+#background{
+  background-image: url(./Components/images/topo-background.png);
+  background-repeat: repeat;
+
+}
+
 h1, h2, h3 {
   color: var(--navy);
+  background: transparent;
+}
+
+form {
+  color: var(--navy);
+  background: transparent;
+  /* margin: 2vw */
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 
 p{
@@ -77,7 +96,8 @@ div{
 .form-control{
   width: 30%;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
+  border: 2px solid white;
   margin: 0.5rem;
 }
 
@@ -91,7 +111,7 @@ div{
 
 #mission-statement {
   border: 1vw solid  var(--navy);
-  border-radius: 2vw;
+  /* border-radius: 2vw; */
   font-size: 2vw;
   margin: 4vw;
   margin-left: 15vw;
@@ -101,7 +121,7 @@ div{
 
 #user-info {
   border: 1.5vw solid  rgb(191, 191, 191);
-  border-radius: 2vw;
+  /* border-radius: 2vw; */
   font-size: 2vw;
   margin: 4vw;
   margin-left: 18vw;
@@ -168,6 +188,7 @@ nav{
 
 #partCardsDiv { 
   /* justify-content: center; */
+  background: transparent;
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 23vw);
@@ -223,7 +244,7 @@ nav{
   width: auto;
   border: none rgb(0, 0, 0) 0.05rem;
   padding: .5rem;
-  border-radius: .25rem;
+  /* border-radius: .25rem; */
   box-shadow: 2px 2px 2px 1px #dfdfdf;
   transition-duration: 600ms;
   background-color: white;
@@ -233,7 +254,7 @@ nav{
   width: auto;
   border: solid rgb(222, 222, 222) 0.05rem;
   padding: .5rem;
-  border-radius: .25rem;
+  /* border-radius: .25rem; */
   box-shadow: 2px 2px 2px 1px #677dff;
   /* transform: scale(1.02); */
 }
@@ -245,7 +266,7 @@ nav{
 
 .loginButton{
   border: solid rgb(69, 182, 63) 0.25rem;
-  border-radius: .75rem ;
+  /* border-radius: .75rem ; */
   padding: 0.2rem;
   font-size: 1rem;
   text-decoration: none;
@@ -271,7 +292,7 @@ nav{
   border: solid rgb(60, 82, 254) 0.25rem;
   width: 100%;
   height: 100%;
-  border-radius: .75rem ;
+  /* border-radius: .75rem ; */
   padding: 0.3rem;
   /* font-size: 1rem; */
   text-decoration: none;
@@ -331,8 +352,13 @@ nav{
 #searchBar{
   width: 25vw;
   padding: 1.5vw;
-  border-radius: 2vw;
+  /* border-radius: 2vw; */
   margin: 3vw;
+  border: 2px solid white
+}
+
+#part-search-bar {
+  background: transparent;
 }
 
 .btn:hover{

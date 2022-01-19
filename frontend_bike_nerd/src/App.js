@@ -44,7 +44,7 @@ function App() {
     return (
     <div className="App">
       <NavBar currentUser={currentUser}/>
-        <div>
+        <div id="background">
           <Routes>
             <Route path="/" element={<Home userLoaded={userLoaded} currentUser={currentUser}/>}/>
             <Route path="user" element={<UserInfo userLoaded={userLoaded} currentUser={currentUser}  />}/>
